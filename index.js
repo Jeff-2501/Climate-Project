@@ -15,13 +15,17 @@ const setWeatherData = data => {
         humidity: data.main.humidity,
         pleassure: data.main.pressure,
         temperature: data.main.temp,
-        date: 'data',
+        date: getDate(),
     }                            
-
+    
     Object.keys(weatherData).forEach( key => {
         document.getElementById(key).textContent = weatherData[key];                                                                        //VAMOS A SETIAR LA INFO EN NUESTRO HTML
     });
+}
 
+const getDate = () => {                                                                 //SETAIAR Y RETORNAR LA DATA DEL DIA.
+    let date = new Date();                                                              //VARIABLE DATE //NEW DATE DONDE SE GUARDARA TODA LA INFORMACION 
+    return `${date.getDate()}-${( '0' + (date.getMonth() +1)).slice(-2)}-${date.getFullYear()}`;                //SETEAR DIA,MES,AÑO
 }
 
 const onLoad = () => {
