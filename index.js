@@ -13,7 +13,7 @@ const setWeatherData = data => {
         location: data.name,    
         description: data.weather[0].main,
         humidity: data.main.humidity,
-        pleassure: data.main.pressure,
+        pressure: data.main.pressure,
         temperature: data.main.temp,
         date: getDate(),
     }                            
@@ -21,7 +21,18 @@ const setWeatherData = data => {
     Object.keys(weatherData).forEach( key => {
         document.getElementById(key).textContent = weatherData[key];                                                                        //VAMOS A SETIAR LA INFO EN NUESTRO HTML
     });
+
+    cleanUp();                                                                                                      //CREAR UNA FUNCION 
+
 }
+
+const cleanUp = () => {
+    let container = document.getElementById('container');
+    let loader = document.getElementById('loader');
+
+    loader.style.display = 'none';
+    container.style.display = 'flex';
+} 
 
 const getDate = () => {                                                                 //SETAIAR Y RETORNAR LA DATA DEL DIA.
     let date = new Date();                                                              //VARIABLE DATE //NEW DATE DONDE SE GUARDARA TODA LA INFORMACION 
